@@ -3,16 +3,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "@/components/Card";
-interface Product {
-  id: number,
-  name: string,
-  quantity: number,
-  price: number,
-  lastUpdate: string,
-  isPerishable: boolean,
-  expiration?: string
-
-}
+import Product from "@/lib/estoque";
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([])
 
