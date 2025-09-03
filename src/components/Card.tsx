@@ -1,6 +1,11 @@
+import Product from "@/lib/estoque";
+
 export default function Card({ product, handleEdit, handleDelete }) {
   return (
-    <div key={product.id} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
+    <div
+      key={product.id}
+      className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200"
+    >
       <h2 className="text-lg font-semibold text-gray-800 mb-2">
         {product.name}
       </h2>
@@ -21,13 +26,25 @@ export default function Card({ product, handleEdit, handleDelete }) {
         {product.isPerishable ? product.expiration : "N/A"}
       </p>
       <div className="flex gap-2">
-        <button onClick={() => handleEdit(product.id)} className="bg-blue-500 text-white px-3 py-1 rounded bg-blue-600 text-sm"                    >
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleEdit(product.id);
+          }}
+          className="bg-blue-500 text-white px-3 py-1 rounded bg-blue-600 text-sm"
+        >
           Editar
         </button>
-        <button onClick={() => handleDelete(product.id)} className="bg-red-500 text-white px-3 py-1 rounded bg-red-600 text-sm" >
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleDelete(product.id);
+          }}
+          className="bg-red-500 text-white px-3 py-1 rounded bg-red-600 text-sm"
+        >
           Apagar
         </button>
       </div>
     </div>
-  )
+  );
 }

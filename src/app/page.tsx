@@ -1,50 +1,43 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Card from "@/components/Card";
-import Product from "@/lib/estoque";
+import Product, { deleteProduct, estoque } from "@/lib/estoque";
 export default function Home() {
-  const [products, setProducts] = useState<Product[]>([])
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const [loading, setLoading] = useState(true)
-
+  const handleEdit = async (id: number) => {
+    // TODO
+  };
+  const handleDelete = async (id: number) => {
+    deleteProduct(id);
+    setProducts([...estoque]);
+  };
   useEffect(() => {
-    /* const response = await axios.get("/api/products") */
-    setProducts([{
-      id: 1,
-      name: 'test1',
-      quantity: 2,
-      price: 2,
-      lastUpdate: 'ontote',
-      isPerishable: false,
-
-    },
-    {
-      id: 2,
-      name: 'test2',
-      quantity: 2,
-      price: 2,
-      lastUpdate: 'onte',
-      isPerishable: true,
-      expiration: 'amanha'
-
-
-    }
-    ])
-    setLoading(false)
-  }, [])
+    setProducts(estoque);
+    setLoading(false);
+  }, []);
   return (
     <div className="min-h-screen bg-gray-50 p-6 ">
-      <h1 className="text-2xl font-bold mb-6">
-        📦 Estoque da Barbearia
-      </h1>
+      <h1 className="text-2xl font-bold mb-6">📦 Estoque da Barbearia</h1>
       <div className="grid grid-cols-3 gap-6 mb-6">
-        {products.map((product) => (
-          <Card key={product.id} product={product} />
-        ))}
+        {products ? (
+          products.map((product) => (
+            <Card
+              key={product.id}
+              product={product}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+            />
+          ))
+        ) : (
+          <p></p>
+        )}
       </div>
-      <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Adicionar</button>
-    </ div >
+      <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+        Adicionar
+      </button>
+    </div>
   );
 }
