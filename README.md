@@ -16,19 +16,23 @@ Como Rodar o Projeto
 
 
 Entre na pasta do projeto:
-cd seu-repositorio
+
+    cd seu-repositorio
 
 
 
 Instale as dependências:
-npm install
-# ou
-yarn install
+    
+    npm install
+    ou
+    yarn install
 
 Execute o servidor de desenvolvimento:
-npm run dev
+        
+    npm run dev
 
 
 
 Abra no navegador:
-Acesse http://localhost:3000 para ver a aplicação.
+
+    Acesse http://localhost:3000 para ver a aplicação.
