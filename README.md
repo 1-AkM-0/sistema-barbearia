@@ -17,7 +17,7 @@ Como Rodar o Projeto
 
 Entre na pasta do projeto:
 
-    cd seu-repositorio
+    cd sistema-barbearia
 
 
 
